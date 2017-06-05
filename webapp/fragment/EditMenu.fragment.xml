@@ -1,0 +1,43 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+		<u:Menu>
+			<u:MenuItem
+				text="Undo"
+				select="handleUndoEditPress"
+				icon="sap-icon://undo"/>
+			<u:MenuItem
+				text="Redo"
+				select="handleRedoEditPress"
+				icon="sap-icon://redo"/>
+			<u:MenuItem
+					text="Copy"
+					select="handleCopyEditPress"
+					icon="sap-icon://copy"/>
+			<u:MenuItem
+					text="Cut"
+					select="handleCutEditPress"
+					icon="sap-icon://scissors"/>
+			<u:MenuItem
+					text="Paste"
+					select="handlePasteEditPress"
+					icon="sap-icon://paste"/>
+			<u:MenuItem
+				text="Find"
+				icon="sap-icon://sys-find">
+				<u:Menu>
+					<u:MenuItem
+						text="Routing"
+						select="handleFindRoutingPress" />
+					<u:MenuItem
+						text="Operation Routing"
+						select="handleFindOperatingRoutingPress" />
+					<u:MenuItem
+						text="Technical Routing"
+						select="handleFindTechnicalRoutingPress" />
+				</u:Menu>
+			</u:MenuItem>
+		</u:Menu>
+
+</core:FragmentDefinition>

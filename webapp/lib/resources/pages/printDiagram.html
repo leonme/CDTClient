@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <title>Print Diagram</title>
+    <script id="sap-ui-bootstrap"
+            type="text/javascript"
+            src="../sap-ui-core.js"
+            data-sap-ui-frameOptions="deny"
+            >
+    </script>
+    <style>
+        html {
+            display: none;
+        }
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<script type="text/javascript">
+    // Frame buster against click jacking
+    if (self == top) {
+        document.documentElement.style.display = 'block' ;
+    } else {
+        top.location = self.location ;
+    }
+
+    jQuery(document).ready(function () {
+        var oData = {},
+                index,
+                nPages,
+                sImageRootKey,
+                sPaperType,
+                sOrientation,
+                sLeftMargin,
+                sTopMargin,
+                sRightMargin,
+                sBottomMargin,
+                sSVGContent,
+                oBody,
+                sPageStyle;
+
+        /**
+         * Extracts the print diagram options from the URL. The options are:
+         * pages: The number of pages of the diagram.
+         * imageRootKey: The root key in localStorage for each page of diagram image. The content is in SVG format.
+         */
+        function extractArguments () {
+            var sArguments,
+                aVars,
+                sVar,
+                aPair;
+
+            if (window && window.location && window.location.search) {
+                sArguments = window.location.search.substring(1);
+                if (window.decodeURI) {
+                    sArguments = decodeURI(sArguments);
+                }
+                aVars = sArguments && sArguments.split("&");
+                if (aVars && aVars.length > 0) {
+                    for (index = 0; index < aVars.length; index++) {
+                        sVar = aVars[index];
+                        aPair = sVar.split("=");
+                        if (aPair.length === 2) {
+                            oData[aPair[0]] = aPair[1];
+                        }
+                    }
+                }
+            }
+        }
+
+        function setStyle (sSelectorName, sStyle) {
+            var i,
+                j,
+                oStyleSheet,
+                oRule;
+
+            if (document && sSelectorName && sStyle) {
+                if (document.styleSheets.length > 0) {
+                    for (i = 0; i < document.styleSheets.length; i++) {
+                        oStyleSheet = document.styleSheets[i];
+                        for (j = 0; j < oStyleSheet.rules.length; j++) {
+                            oRule = oStyleSheet.rules[j];
+                            if (oRule.selectorText === sSelectorName) {
+                                oStyleSheet.removeRule(j);
+                                oStyleSheet.insertRule(sStyle, j);
+                                return;
+                            }
+                        }
+                        if (oStyleSheet.href === null) {
+                            // Adds local style sheet
+                            oStyleSheet.insertRule(sStyle, 0);
+                        }
+                    }
+                }
+            }
+        }
+
+        function getPageStyle (sPaperType, sOrientation, sLeftMargin, sTopMargin, sRightMargin, sBottomMargin) {
+            var sStyle;
+
+            sStyle = "@page { ";
+            if (sPaperType || sOrientation) {
+                sStyle += "size: ";
+                if (sPaperType) {
+                    sStyle += sPaperType;
+                }
+                if (sOrientation) {
+                    sStyle += " " + sOrientation;
+                }
+                sStyle += ";";
+            }
+            if (sLeftMargin) {
+                sStyle += " margin-left: " + sLeftMargin + ";";
+            }
+            if (sTopMargin) {
+                sStyle += " margin-top: " + sTopMargin + ";";
+            }
+            if (sRightMargin) {
+                sStyle += " margin-right: " + sRightMargin + ";";
+            }
+            if (sBottomMargin) {
+                sStyle += " margin-bottom: " + sBottomMargin + ";";
+            }
+            sStyle += " }";
+            return sStyle;
+        }
+
+        if (window && window.localStorage) {
+            // Sets the focus.
+            window.focus();
+
+            // Extracts the arguments from the URL.
+            extractArguments();
+            nPages = +oData.pages;
+            sImageRootKey = oData.imageKey;
+            sPaperType = oData.paperType;
+            sOrientation = oData.orientation;
+            sLeftMargin = oData.leftMargin;
+            sTopMargin = oData.topMargin;
+            sRightMargin = oData.rightMargin;
+            sBottomMargin = oData.bottomMargin;
+
+            oBody = jQuery("body");
+
+            // Gets the diagram SVG for each page from localStorage and embed the image in the page.
+            if (nPages !== undefined && !isNaN(nPages) && sImageRootKey) {
+                sPageStyle = getPageStyle(sPaperType, sOrientation, sLeftMargin, sTopMargin, sRightMargin, sBottomMargin);
+                setStyle("@page", sPageStyle);
+
+                for (index = 1; index <= nPages; index++) {
+                    sSVGContent = localStorage[sImageRootKey + index];
+                    if (sSVGContent) {
+                        oBody.append(sSVGContent);
+                        oBody.append("<div style='page-break-after: always;' />");
+                    }
+                    localStorage.removeItem(sImageRootKey + index);
+                }
+
+                // Opens the browser print dialog.
+                if (window.print) {
+                    window.print();
+                }
+            } else {
+                console.log("Invalid print diagram arguments.");
+            }
+        } else {
+            console.log("The print diagram cannot be supported because your web browser does not support local storage.");
+        }
+    });
+</script>
+</body>
+</html>

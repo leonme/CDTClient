@@ -1,0 +1,80 @@
+<!DOCTYPE html >
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, height=device-height, initial-scale=1.0">
+    <title>CDT Prototype</title>
+
+
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/jquery.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/log4javascript.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/uuid.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/common.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/d3.min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/hammer.min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/klay.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/thirdparty/gravityCoreClient.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/core-min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/model-min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/common.ui-min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/ui.symbol-min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/ui.editor-min.js"></script>
+    <script type="text/javascript" src="lib/sap/galilei/galilei.bpmn-min.js"></script>
+
+    <!--<script type="text/javascript" src="lib/sap/galilei/thirdparty/Math.uuid.js"></script>-->
+        <!-- Add Galilei JavaScript library files -->
+
+    <script src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+            id="sap-ui-bootstrap"
+            data-sap-ui-theme="sap_belize"
+            data-sap-ui-libs="sap.m"
+            data-sap-ui-compatVersion="edge"
+            data-sap-ui-preload="async"
+            data-sap-ui-resourceroots='{"com.sap.cdt":"./"}'>
+    </script>
+
+
+    <script type="text/javascript" src="lib/sap/galilei/ui5/Editor.js"></script>
+    <script type="text/javascript" src="js/utils.js"></script>
+    <script type="text/javascript" src="js/galileiOperations.js"></script>
+    <script type="text/javascript" src="js/modeling/bpmn/editor.js"></script>
+    <script type="text/javascript" src="js/modeling/bpmn/diagram.js"></script>
+    <script type="text/javascript" src="js/modeling/bpmn/model.js"></script>
+    <script type="text/javascript" src="js/modeling/bpmn/library.js"></script>
+    <script type="text/javascript" src="js/modeling/bpmn/galileiTransformation.js"></script>
+    <!--<script type="text/javascript" src="lib/GalileiLoader.js"></script>-->
+<!--         Add the Business Process model definition
+        <script type="text/javascript" src="js/model.js"></script>
+        Add the Business Process diagram definition
+        <script type="text/javascript" src="js/diagram.js"></script>
+        Add the Business Process symbol arrows definition
+        <script type="text/javascript" src="js/library.js"></script>
+        Add the Diagram Editor Extension
+        <script type="text/javascript" src="js/editor.js"></script>
+         -->
+    <script src="js/modeling/flowgraph/flowgraph.js"></script>
+    <script src="js/modeling/flowgraph/model.js"></script>
+    <script src="js/modeling/flowgraph/ui/diagram.js"></script>
+    <script src="js/modeling/flowgraph/ui/editorExtension.js"></script>
+    <script src="js/modeling/flowgraph/ui/addInputCommand.js"></script>
+    <script src="js/modeling/flowgraph/ui/addOutputCommand.js"></script>
+        
+        
+        <link rel="stylesheet" type="text/css" href="css/galilie_style.css">
+
+    <script>
+        sap.ui.getCore().attachInit(function() {
+            sap.ui.require([
+                "sap/ui/core/ComponentContainer"
+            ], function() {
+                new sap.ui.core.ComponentContainer({
+                    name: "com.sap.cdt"
+                }).placeAt("content");
+            });
+        });
+    </script>
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

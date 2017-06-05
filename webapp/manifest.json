@@ -1,0 +1,96 @@
+{
+  "_version": "1.1.0",
+  "sap.app": {
+    "_version": "1.1.0",
+    "id": "com.sap.cdt",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "applicationVersion": {
+      "version": "1.0.0"
+    }
+  },
+  "sap.ui": {
+    "_version": "1.1.0",
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    },
+    "supportedThemes": [
+      "sap_hcb",
+      "sap_bluecrystal",
+      "sap_belize"
+    ]
+  },
+  "sap.ui5": {
+    "_version": "1.1.0",
+    "rootView": {
+      "viewName": "com.sap.cdt.view.rootApp",
+      "type": "XML",
+      "id": "app"
+    },
+    "dependencies": {
+      "minUI5Version": "1.30",
+      "libs": {
+        "sap.ui.core": {},
+        "sap.m": {},
+        "sap.tnt": {},
+        "sap.ui.layout": {}
+      }
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.sap.cdt.i18n.i18n"
+        }
+      }
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "controlId": "mainContents",
+        "viewType": "XML",
+        "controlAggregation": "pages",
+        "viewPath": "com.sap.cdt.view",
+        "async": true
+      },
+      "routes": [
+        {
+          "pattern": "",
+          "name": "routing",
+          "target": "routing"
+        },
+        {
+          "pattern": "routing",
+          "name": "routing",
+          "target": "routing"
+        },
+        {
+          "pattern": "op-routing",
+          "name": "op-routing",
+          "target": "op-routing"
+        },
+        {
+          "pattern": "tech-routing",
+          "name": "tech-routing",
+          "target": "tech-routing"
+        }
+      ],
+      "targets": {
+        "routing": {
+          "viewName": "Routing"
+        },
+        "op-routing": {
+          "viewName": "OperationRouting"
+        },
+        "tech-routing": {
+          "viewName": "TechnicalRouting"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<core:View id="techRoutingView"
+        xmlns="sap.m"
+        xmlns:tnt="sap.tnt"
+        xmlns:l="sap.ui.layout"
+        xmlns:core="sap.ui.core"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:g="sap.galilei.ui5"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        controllerName="com.sap.cdt.controller.TechnicalRouting">
+        <Panel height="100%" >
+                <html:div id="header">
+                        <html:div id="title">
+                                Process Technical Routing Diagram
+                        </html:div>
+                        <html:div id="tools" >
+                                <html:input class="tool" id="pointer" type="image" src="images/pointerCursor.png" alt="Pointer"/>
+                                <html:input class="tool" id="lasso" type="image" src="images/lasso.png" alt="Lasso"/>
+                                <html:input class="tool" id="undo" type="image" src="images/Undo.png" alt="Undo"/>
+                                <html:input class="tool" id="redo" type="image" src="images/Redo.png" alt="Redo"/>
+                                <html:input class="tool" id="delete" type="image" src="images/Delete.png" alt="Delete"/>
+                                <html:input class="tool" id="nodeTool" type="image" src="images/Node24.png" alt="Table"/>
+                                <html:input class="tool" id="flowgraphTool" type="image" src="images/Flow.png" alt="Flow"/>
+                                <html:input class="tool" id="zoomIn" type="image" src="images/ZoomIn.png" alt="zoom In"/>
+                                <html:input class="tool" id="zoomOut" type="image" src="images/ZoomOut.png" alt="zoom Out"/>
+                                <html:input class="tool" id="globalView" type="image" src="images/globalView.png" alt="Global View"/>
+                                <html:input class="tool" id="save" type="image" src="images/Save.png" alt="Save"/>
+                                <html:input class="tool" id="load" type="image" src="images/Load.png" alt="Load"/>
+                        </html:div>
+                </html:div>
+                <g:Editor id="techGalileiEditor"
+                          width="100%"
+                          height="100%"
+                          editorExtensionClassName="sap.modeling.flowgraph.ui.DiagramEditorExtension"
+                          isReadOnly="false"
+                          showViewBorder="true"
+                          showZoomTools="true"
+                          zoomToolHorizontalAlignment="right"
+                          ready="onDiagramEditorReady">
+                </g:Editor>
+        </Panel>
+</core:View>

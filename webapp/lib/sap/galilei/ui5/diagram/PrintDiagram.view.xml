@@ -1,0 +1,101 @@
+<mvc:View
+        controllerName="sap.galilei.ui5.diagram.PrintDiagram"
+        xmlns="sap.m"
+        xmlns:mvc="sap.ui.core.mvc"
+        xmlns:core="sap.ui.core"
+        xmlns:l="sap.ui.layout"
+        xmlns:html="http://www.w3.org/1999/xhtml"
+        >
+    <html:style>
+        .label {
+            width: 140px;
+        }
+        .noLeftMargin {
+            margin-left: -1em;
+        }
+    </html:style>
+
+    <HBox height="100%">
+        <items>
+            <VBox>
+                <items>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="paperSizeLabel" class="label" text="{ui5_i18n>PRINT_DIAGRAM_PAPER_SIZE_LABEL}" />
+                            <Select id="paperSizeList" width="160px" selectedKey="{/paperType}" change="onPaperTypeChange" items="{
+                                  path: '/paperSizes'
+                                }">
+                                <core:Item key="{key}" text="{name}" />
+                            </Select>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="pageOrientation" text="{ui5_i18n>PRINT_DIAGRAM_PAGE_ORIENTATION_LABEL}" class="label"/>
+                            <Select id="pageOrientations" width="160px" selectedKey="{/pageOrientation}" change="onOrientationChange" items="{
+                                  path: '/pageOrientations'
+                                }">
+                                <core:Item key="{key}" text="{name}" />
+                            </Select>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="fitToPageLabel" text="{ui5_i18n>PRINT_DIAGRAM_FIT_TO_PAGES_LABEL}" class="label"/>
+                            <VBox>
+                                <items>
+                                    <RadioButton id="fitToMultiPages" class="noLeftMargin" groupName="fitToPage" text="{ui5_i18n>PRINT_DIAGRAM_BEST_FIT_PAGES_LABEL}" selected="{/isBestFitToPages}" select="onBestFitToPagesSelected"/>
+                                    <RadioButton id="fitToOnePage" class="noLeftMargin" groupName="fitToPage" text="{ui5_i18n>PRINT_DIAGRAM_FIT_TO_ONE_PAGE_LABEL}" selected="{/isFitToOnePage}" select="onFitToOnePageSelected"/>
+                                </items>
+                            </VBox>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="pagesLabel" text="{ui5_i18n>PRINT_DIAGRAM_PAGE_NUMBERS_LABEL}" class="label"/>
+                            <Label id="numberPages" text="{/totalPages} ({/horizontalPages}x{/verticalPages}, {/selectedOrientation})"/>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="pageScaleLabel" text="{ui5_i18n>PRINT_DIAGRAM_PAGE_SCALE_LABEL}" class="label"/>
+                            <Label id="pageScalePercent" text="{/pageScalePercent} %"/>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="pageMarginsLabel" text="{ui5_i18n>PRINT_DIAGRAM_PAGE_MARGINS_LABEL}" class="label"/>
+                            <RadioButton id="unitMmLabel" class="noLeftMargin" groupName="marginUnit" text="mm" selected="{/isMm}" select="onUnitMmSelected"/>
+                            <RadioButton id="unitInchLabel" groupName="marginUnit" text="inch" selected="{/isInch}" select="onUnitInchSelected"/>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="leftMarginLabel" text="{ui5_i18n>PRINT_DIAGRAM_LEFT_MARGIN_LABEL}" class="label"/>
+                            <Input id="leftMargin" type="Number" width="64px" value="{/paperLeftMargin}"/>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="rightMarginLabel" text="{ui5_i18n>PRINT_DIAGRAM_TOP_MARGIN_LABEL}" class="label"/>
+                            <Input id="rightMargin" type="Number" width="64px" value="{/paperTopMargin}"/>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="topMarginLabel" text="{ui5_i18n>PRINT_DIAGRAM_RIGHT_MARGIN_LABEL}" class="label"/>
+                            <Input id="topMargin" type="Number" width="64px" value="{/paperRightMargin}"/>
+                        </items>
+                    </HBox>
+                    <HBox alignItems="Center">
+                        <items>
+                            <Label id="bottomMarginLabel" text="{ui5_i18n>PRINT_DIAGRAM_BOTTOM_MARGIN_LABEL}" class="label"/>
+                            <Input id="bottomMargin" type="Number" width="64px" value="{/paperBottomMargin}"/>
+                        </items>
+                    </HBox>
+                </items>
+            </VBox>
+            <html:div id="printDiagramPreview" class="formLeftMargin" style="width: 480px; height: 480px;"/>
+        </items>
+    </HBox>
+</mvc:View>

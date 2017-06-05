@@ -1,0 +1,110 @@
+.startEvent
+{
+    stroke: #288000;
+    fill: #ECFDDC;
+}
+.startEventIcon
+{
+    stroke: #288000;
+    fill: none;
+}
+.startEventIconFill
+{
+    stroke: none;
+    fill: #288000;
+}
+.endEvent
+{
+    stroke: #CC2424;
+    fill: #FFE6E5;
+}
+.endEventIcon
+{
+    stroke: #D85252;
+    fill: #D85252;
+}
+.task
+{
+    stroke: #428EB0;
+    fill: url(#taskGradient); /* Uses gradient defined in SVG */
+}
+.taskIcon
+{
+    stroke: #0080C0;
+    fill: #0080C0;
+}
+.taskName
+{
+    fill: #0080C0;
+}
+.gateway
+{
+    stroke: #997C35;
+    fill: #FFFFD6;
+}
+.gatewayIcon
+{
+    stroke: #997C35;
+    fill: #997C35;
+}
+.sequence
+{
+    stroke: #0080C0;
+}
+body
+{
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: white;
+}
+#header
+{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  background: #E0E0E0;
+}
+#title
+{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding-top: 10px;
+  padding-left: 10px;
+  width: 160px;
+  font: normal normal bold 20px Unicode MS;
+  color: #666666;
+}
+#tools
+{
+  position: absolute;
+  top: 2px;
+  left: 160px;
+  width: 100%;
+  font: normal normal bold 18px Unicode MS;
+  color: White;
+  vertical-align: middle;
+}
+.tool
+{
+    font: normal normal bold 18px Unicode MS;
+    color: White;
+    padding-top: 6px;
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-bottom: 6px;
+    width: 32px;
+    height: 32px;
+}
+#svgContainer
+{
+  position: absolute;
+  overflow: hidden;
+  top: 44px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}

@@ -1,0 +1,44 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core"
+	xmlns:u="sap.ui.unified">
+		<u:Menu>
+			<u:MenuItem
+				text="Save"
+				select="handleSaveDiagramsPress"
+				icon="sap-icon://save"/>
+			<u:MenuItem
+				text="Load ME Routing"
+				select="handleLoadMeRoutingPress"
+				icon="sap-icon://cause"/>
+			<u:MenuItem
+				text="Open Recent Diagrams"
+                icon="sap-icon://open-folder">
+				<u:Menu>
+					<u:MenuItem
+						text="Routing1"
+						select="handleMenuItemPress" />
+					<u:MenuItem
+						text="Routing2"
+						select="handleMenuItemPress" />
+				</u:Menu>
+			</u:MenuItem>
+
+			<u:MenuItem
+				text="Delete Current Diagram"
+				startsSection="true"
+                icon="sap-icon://delete"
+				select="handleDeleteDiagramPress" />
+			<u:MenuItem
+				text="Export Diagram"
+                icon="sap-icon://download"
+				select="handleExportDiagramPress" />
+			<!--<u:MenuTextFieldItem-->
+				<!--label="Find"-->
+				<!--enabled="true"-->
+				<!--startsSection="true"-->
+				<!--icon="sap-icon://filter"-->
+				<!--select="handleTextFieldItemPress" />-->
+		</u:Menu>
+
+</core:FragmentDefinition>
